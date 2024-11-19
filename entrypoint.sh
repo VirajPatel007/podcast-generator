@@ -16,7 +16,7 @@ git config --global --add safe.directory /github/workspace
 
 # Execute the Python script feed.py using Python 3.
 # This script is likely designed to update or generate some kind of feed, possibly modifying files in the repository.
-python3 /urs/bin/feed.py
+python3 /usr/bin/feed.py
 
 # Stage all changes (including new files, modified files, and deleted files) in the repository for commit.
 # `git add -A` stages everything in the repository, ensuring that all changes are prepared for commit.
