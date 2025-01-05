@@ -10,6 +10,9 @@ echo "================================="
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${INPUT_EMAIL}"
 
+# GITHUB_ACTOR: This is a predefined environment variable in GitHub Actions that contains the GitHub username of the person who triggered the workflow (e.g., HarryPotter). It is automatically set by GitHub and is always available in workflows. Typically, it's used to set the committer's name in Git operations (e.g., git config --global user.name "${GITHUB_ACTOR}"), ensuring the commit is attributed to the correct user.
+# INPUT_EMAIL: This is an input parameter you define in your action.yaml file. When you run the action, you can pass a custom email address for the committer (e.g., abc@gmail.com). This input is optional and can be provided in the workflow under the with section (e.g., with: email: "abc@gmail.com"). It overrides the default email (which would be ${{ github.actor }}@localhost) and sets the committer's email for Git commits (e.g., git config --global user.email "${INPUT_EMAIL}").
+
 # Configure Git to treat the current workspace as a "safe directory" for Git operations.
 # This is needed because, in certain contexts (like GitHub Actions), Git might consider the workspace unsafe due to potential issues with ownership or security, and it needs to be explicitly marked as "safe" for Git to operate.
 git config --global --add safe.directory /github/workspace
