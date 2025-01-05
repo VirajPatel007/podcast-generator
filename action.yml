@@ -1,18 +1,28 @@
-name: "Podcast Generator 001"
-author: "Viraj Patel"
-description: "Generates a feed for a podcast from a YAML file"
+# Define the metadata for the GitHub Action
+name: "Podcast Generator 001"  # The name of the GitHub Action. This will be displayed in the GitHub Actions UI.
+author: "Viraj Patel"  # The author of the GitHub Action. It is usually the person or organization who created it.
+description: "Generates a feed for a podcast from a YAML file"  # A short description of what the GitHub Action does.
+
+# Specifies how the GitHub Action is executed
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: "docker"  # This indicates that the action will be executed using Docker. Docker containers are used to package and run the code in a consistent environment. Docker allows you to run software inside an isolated container with all dependencies bundled together. This ensures that the action will run consistently across different environments, with no dependency issues.
+  image: "Dockerfile"  # The image refers to the Dockerfile that will be used to build the container environment in which the action runs. The Dockerfile defines the environment and all the necessary setup instructions for the action to run properly. The `Dockerfile` here is the name of the file that contains the instructions for creating the Docker image.
+  
+# Branding information used to customize the appearance of the action in the GitHub UI
 branding:
-  icon: "git-branch"
-  color: "red"
+  icon: "git-branch"  # The icon used to represent this action in the GitHub Actions UI. In this case, it's using the "git-branch" icon.
+  color: "red"  # The color of the icon used in the GitHub Actions UI. This specifies that the icon will be red.
+
+# Define the inputs to the action, which can be used to parameterize its behavior
+# Defines the inputs for the action, which are parameters that a user must provide when using this action.
+# These inputs can be used to customize the behavior of the action when it is executed.
 inputs:
   email:
-    description: The commiter's email address
-    required: true
-    default: ${{ github.actor }}@localhost
+    description: "The committer's email address"  # A description of what this input represents.
+    required: true  # This indicates that the `email` input is required. The action cannot run without this input.
+    default: ${{ github.actor }}@localhost  # The default value for this input. It uses GitHub's context variable `${{ github.actor }}` to get the username of the person initiating the action, and appends `@localhost` as the domain.
+  
   name:
-    description: The commiter's name
-    required: true
-    default: ${{ github.actor }}
+    description: "The committer's name"  # A description of what this input represents.
+    required: true  # This indicates that the `name` input is required. The action cannot run without this input.
+    default: ${{ github.actor }}  # The default value for this input. It uses `${{ github.actor }}` to get the name of the user who triggered the action (i.e., the GitHub username).
